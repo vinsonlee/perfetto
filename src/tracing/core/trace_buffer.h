@@ -284,7 +284,7 @@ class TraceBuffer {
   // ChunkRecord on top of the moved SMB's header (page + chunk header).
   // This special requirement is covered by static_assert(s) in the .cc file.
   struct ChunkRecord {
-    explicit ChunkRecord(size_t sz) : flags{0}, is_padding{0} {
+    explicit ChunkRecord(size_t sz) : flags{0}, is_padding{0}, unused_flag{0} {
       PERFETTO_DCHECK(sz >= sizeof(ChunkRecord) &&
                       sz % sizeof(ChunkRecord) == 0 && sz <= kMaxSize);
       size = static_cast<decltype(size)>(sz);
